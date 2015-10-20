@@ -5,6 +5,6 @@ run Rails.application
 require "rack"
 
 # authentication
-use Rack::Auth::Basic, "Hello, World" do |username, password|
+use Rack::Auth::Basic, 'Enter super secret password' do |username, password|
   'secret' == password
 end
