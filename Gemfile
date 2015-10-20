@@ -49,5 +49,7 @@ gem 'rails_12factor', group: :production
 
 gem 'puma'
 
+gem 'rack-wwwhisper', '~> 1.0'
+
 ruby "2.2.1"
 
