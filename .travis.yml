@@ -15,5 +15,7 @@ env:
 # default ruby script
 before_install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
-after_success:
-  - ./selenium/run_selenium_tests.sh
+  - ./selenium/setup_selenium_tests.sh
+script:
+  - bundle exec rake
+  - nosetests --nocapture selenium/dummy_test.py
