@@ -9,6 +9,14 @@ test:
 env:
   global:
     secure: kLRUVn1B4OKHmEwU9zYFVSK/5deFYoi+3WTUoIJO73UqXWQuQF8OICBfGbviDZtIXUbnjGwQtBccszg5ZOf2sT7T0TdvF4Z/hKiHkEE+x2NZhC3GwZZBpmn+yuHsj2c2O09hUpqq6mxllRrhuu8pyZ653iwuhcrx4fVbXKlCCQgU5lG4tuEhCiTJVEEjjw5MUWL3Y3Ri2ZjNKS1yY0p5xoQSVEsHLVSrTS/Vl1JtvA7noIdI5B4RtTFcJn46Oiw0msucN6qfNSn0Bvt5Jx5ixLobx/4QCJOmcG1jj9W5ShaQo573ji6gb4rkkPTcA5Bkd9X4WhVahNzqzUuowMnWO6bYWB8yVZxbuJC6jOy0PGkivAhj76MdmW9J07nQEx1NpWU3HeJ/AD+y5RWReCFZG100Ju2epArjuPvm0FfFb/IC46P+QUy6mt+ouswGPooh1fQR1vI4VHuqSB0yccGhZkNMiD/XT+NRvWF6N3cSxkhF5kcFn8vYuHmKM/gYIUGgBwTilkl9XifXhV185V/7cyigy0lWqRBN60w8zL7pMs2jzlNhyzkngJriNmp/SX/FJqcsH17UKajbvefYGuBQc7yi6f7aZlyjHfhG5Hdj9DWdQ0+TrBJv4wlEmSg0tZG+nmnmqAMfi1qZAYQ/OHEOfsB/CJJKg/lNSckgxnAJXAE=
+# Install heroku toolkit
+addons:
+  apt:
+    sources:
+    - heroku
+    packages:
+    - heroku-toolbelt
+
 before_script:
   - psql -c 'create database testapp_test;' -U postgres
   - "./selenium/setup_selenium_tests.sh"
