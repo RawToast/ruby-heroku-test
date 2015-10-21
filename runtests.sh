@@ -4,7 +4,8 @@ set -ev
 bundle exec rake
 
 # Push to dummy application
-heroku git:remote -a rocky-scrubland-staging
+git remote add heroku git@heroku.com:rocky-scrubland-staging.git
+# Heroku keys
 heroku keys:add
 git push heroku master
 
