@@ -1,9 +1,12 @@
 language: ruby
 rvm:
-  - 2.2.1
+- 2.2.1
 before_script:
-  - psql -c 'create database testapp_test;' -U postgres
+- psql -c 'create database testapp_test;' -U postgres
 test:
   adapter: postgresql
   database: testapp_test
   username: postgres
+env:
+  global:
+    secure: Saq+467VxvamFrcshN2l1ePgMl2Bndl9hiqM2Snx/9bfanwBHCQiCvmN9PgU9mCOcOVX2a0qyDVlsC1o2PPpbPbqO1D27/rLxKeKnCNLd2sf0H7i3Ps9/rBXncKtO0eQIf1fyd5S9Z6KL1JtFzivMIIYyxl/bLHYK8bE0mzICrOJPLG4NwYxbmzNVvQ39offQAN1On6PzC91IBYxO02JkG3qAy40ehhJ2ih9MlcL7H+DYj9HmF7JC8nS/h1SCyy73dvwGhcWIK4Usg73AttjkFkiKMqJrA+JpGFWbaGrHa0142jFnXadLUkgc5DszXWk2oFSVqgfg4HJgzbf/nu8jXdlgolpHKU1Q4NXP7PA7wzIS0tcQBpU+nZAHVxXY+sZW7bHA76gPZMLb5k0ZGDkTlxSWn/g7wAobH6demYR4sA1g9LNJHFmVkinss8Ft1k3qeI0kVvzk0oVg9sAaQAdOUOKu8sSxq7cwWVrrv5CIYV3dTIXbRgz9IfHR8BYE3RyLxaBLD4B0wCv6OHUcIWO5w3NG6DWukCvMpvyxVEapL7iEG/269hvvM+KKOn4u3b8KOyh6/7llLJjlarPo5F9TTmzvd2qIJ5KPNtZH/JKroaonLFu8xI0uwPZzUQ/QJlfChIAKUpdxfRBJ9pwvLYeyBJRJrRYMr08zaZdVd613n0=
