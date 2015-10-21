@@ -22,7 +22,8 @@ before_script:
   - "./selenium/setup_selenium_tests.sh"
   - echo -e "Host heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - git remote add heroku git@heroku.com:rocky-scrubland-staging.git
+  - git remote add staging git@heroku.com:rocky-scrubland-staging.git
+  - git remote add heroku git@heroku.com:rocky-scrubland-9436.git
   # Turn off warnings about SSH keys:
   - echo "Host heroku.com" >> ~/.ssh/config
   - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
