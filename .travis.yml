@@ -34,3 +34,5 @@ before_script:
   - yes | heroku keys:add
 script:
   - "./runtests.sh"
+after_success:
+  - heroku pipelines:promote -r staging
