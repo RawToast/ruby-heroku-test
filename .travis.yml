@@ -25,5 +25,7 @@ before_install:
 before_script:
   - psql -c 'create database testapp_test;' -U postgres
   - ./selenium/setup_selenium_tests.sh
+  - echo -e "Host heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
   - ./runtests.sh

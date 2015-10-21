@@ -5,7 +5,7 @@ bundle exec rake
 
 # Push to dummy application
 git remote add heroku git@heroku.com:rocky-scrubland-staging.git
-git push heroku master -q
+git push heroku master
 
 # Run selenium tests
 nosetests --nocapture selenium/dummy_test.py
