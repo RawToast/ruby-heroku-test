@@ -12,3 +12,8 @@
 !/log/.keep
 /tmp
 .env
+
+# Python compiled files
+*.pyc
+# Ghostdriver logs
+selenium/ghostdriver.log
