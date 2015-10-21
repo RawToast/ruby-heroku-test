@@ -5,7 +5,10 @@ class ArticlesControllerTest < ActionController::TestCase
     assert true
   end
 
-  test 'the truth is a lie' do
-    assert false
-  end
+# Travis will fail when running rake tests if this test is enabled.
+# This would hault the build after rake tets, and prevent deployment or
+# the selenium tests from running.
+#  test 'the truth is a lie' do
+#    assert false
+#  end
 end

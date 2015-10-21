@@ -23,6 +23,7 @@ class DummyTest(TestCase):
         print (self.driver.title)
         self.assertTrue(True)
 
+#  Travis will fail when running nosetests at this point, if this test is enabled
 #    def testFailure(self):
 #        self.driver.get("http://www.google.com")
 #        print("Fail everything now")
