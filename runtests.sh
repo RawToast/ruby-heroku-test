@@ -4,7 +4,7 @@ set -ev
 bundle exec rake
 
 # Push to dummy application
-git push heroku master
+git push staging master
 
 # Run selenium tests
 nosetests --nocapture selenium/dummy_test.py
