@@ -6,26 +6,31 @@ test:
   adapter: postgresql
   database: testapp_test
   username: postgres
-
-# Heroku Toolbelt
+env:
+  global:
+    secure: kLRUVn1B4OKHmEwU9zYFVSK/5deFYoi+3WTUoIJO73UqXWQuQF8OICBfGbviDZtIXUbnjGwQtBccszg5ZOf2sT7T0TdvF4Z/hKiHkEE+x2NZhC3GwZZBpmn+yuHsj2c2O09hUpqq6mxllRrhuu8pyZ653iwuhcrx4fVbXKlCCQgU5lG4tuEhCiTJVEEjjw5MUWL3Y3Ri2ZjNKS1yY0p5xoQSVEsHLVSrTS/Vl1JtvA7noIdI5B4RtTFcJn46Oiw0msucN6qfNSn0Bvt5Jx5ixLobx/4QCJOmcG1jj9W5ShaQo573ji6gb4rkkPTcA5Bkd9X4WhVahNzqzUuowMnWO6bYWB8yVZxbuJC6jOy0PGkivAhj76MdmW9J07nQEx1NpWU3HeJ/AD+y5RWReCFZG100Ju2epArjuPvm0FfFb/IC46P+QUy6mt+ouswGPooh1fQR1vI4VHuqSB0yccGhZkNMiD/XT+NRvWF6N3cSxkhF5kcFn8vYuHmKM/gYIUGgBwTilkl9XifXhV185V/7cyigy0lWqRBN60w8zL7pMs2jzlNhyzkngJriNmp/SX/FJqcsH17UKajbvefYGuBQc7yi6f7aZlyjHfhG5Hdj9DWdQ0+TrBJv4wlEmSg0tZG+nmnmqAMfi1qZAYQ/OHEOfsB/CJJKg/lNSckgxnAJXAE=
 addons:
   apt:
     sources:
-      - heroku
+    - heroku
     packages:
-      - heroku-toolbelt
-
-env:
-  global:
-    secure: Saq+467VxvamFrcshN2l1ePgMl2Bndl9hiqM2Snx/9bfanwBHCQiCvmN9PgU9mCOcOVX2a0qyDVlsC1o2PPpbPbqO1D27/rLxKeKnCNLd2sf0H7i3Ps9/rBXncKtO0eQIf1fyd5S9Z6KL1JtFzivMIIYyxl/bLHYK8bE0mzICrOJPLG4NwYxbmzNVvQ39offQAN1On6PzC91IBYxO02JkG3qAy40ehhJ2ih9MlcL7H+DYj9HmF7JC8nS/h1SCyy73dvwGhcWIK4Usg73AttjkFkiKMqJrA+JpGFWbaGrHa0142jFnXadLUkgc5DszXWk2oFSVqgfg4HJgzbf/nu8jXdlgolpHKU1Q4NXP7PA7wzIS0tcQBpU+nZAHVxXY+sZW7bHA76gPZMLb5k0ZGDkTlxSWn/g7wAobH6demYR4sA1g9LNJHFmVkinss8Ft1k3qeI0kVvzk0oVg9sAaQAdOUOKu8sSxq7cwWVrrv5CIYV3dTIXbRgz9IfHR8BYE3RyLxaBLD4B0wCv6OHUcIWO5w3NG6DWukCvMpvyxVEapL7iEG/269hvvM+KKOn4u3b8KOyh6/7llLJjlarPo5F9TTmzvd2qIJ5KPNtZH/JKroaonLFu8xI0uwPZzUQ/QJlfChIAKUpdxfRBJ9pwvLYeyBJRJrRYMr08zaZdVd613n0=
-# script:
-# default ruby script
+    - heroku-toolbelt
 before_install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 before_script:
   - psql -c 'create database testapp_test;' -U postgres
-  - ./selenium/setup_selenium_tests.sh
+  - "./selenium/setup_selenium_tests.sh"
   - echo -e "Host heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - git remote add heroku git@heroku.com:rocky-scrubland-staging.git
+  # Turn off warnings about SSH keys:
+  - echo "Host heroku.com" >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+  # Clear your current Heroku SSH keys:
+  - heroku keys:clear
+  # Add a new SSH key to Heroku
+  - yes | heroku keys:add
 script:
-  - ./runtests.sh
+  - "./runtests.sh"
