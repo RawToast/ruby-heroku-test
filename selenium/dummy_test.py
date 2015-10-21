@@ -23,7 +23,7 @@ class DummyTest(TestCase):
         print (self.driver.title)
         self.assertTrue(True)
 
-    def testSomething(self):
-        self.driver.get("http://www.google.com")
-        print("Fail everything now")
-        self.assertTrue(False)
+#    def testFailure(self):
+#        self.driver.get("http://www.google.com")
+#        print("Fail everything now")
+#        self.assertTrue(False)
